@@ -1,10 +1,10 @@
 name: Docker CI
 on:
+  workflow_dispatch:
   push:
     branches: [main]
   pull_request:
     branches: [main]
-  workflow_dispatch:
 
 jobs:
   build:
@@ -27,5 +27,5 @@ jobs:
       with:
         context: .
         push: true
-        platforms: linux/amd64,linux/arm64,linux/arm/v7
-        tags: cyfershepard/jellystat:latest
+        platforms: linux/amd64,linux/arm64
+        tags: ${{ secrets.DOCKER_USERNAME }}/jellystat:latest
